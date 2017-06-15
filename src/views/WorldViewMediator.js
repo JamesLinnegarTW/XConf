@@ -3,12 +3,17 @@ import ViewMediator from './ViewMediator';
 
 export default class WorldViewMediator extends ViewMediator {
 
-  constructor(world) {
-    super();
+  constructor(world, mediatorFactory) {
+    super(world, mediatorFactory);
     this.world = world;
 
-    this.world.addObserver("LocationUpdated", (e) => this.loadBackground(e));
     this.object3D = this.makeObject3D();
+
+
+    this.world.addObserver("LocationUpdated", (e) => this.loadBackground(e));
+    this.world.addObserver("ChairAdded", (e) => this.onChairAdded(e));
+    this.world.addObserver("ConsultantAdded", (e) => this.onConsultantAdded(e));
+
 
   }
 
@@ -16,14 +21,13 @@ export default class WorldViewMediator extends ViewMediator {
     const container = new THREE.Object3D();
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     const texture = new THREE.TextureLoader().load('/images/office-entrance.jpeg');
-    const material = new THREE.MeshLambertMaterial(
+    const material = new THREE.MeshBasicMaterial(
       { map: texture,
         side: THREE.DoubleSide }
       );
 
     const mesh = new THREE.Mesh(geometry, material);
     container.add(mesh);
-
     return container;
   }
 
@@ -34,9 +38,14 @@ export default class WorldViewMediator extends ViewMediator {
     worldSphere.material.map = texture;
   }
 
-  onFrameRendered() {
-    // dont do anything yet
+  onChairAdded(e){
+    this.addChild(e.chair);
   }
+
+  onConsultantAdded(e){
+    this.addChild(e.consultant);
+  }
+
 
 
 }

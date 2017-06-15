@@ -1,13 +1,14 @@
 import * as THREE from 'three';
 import WorldViewMediator from "./WorldViewMediator";
 import RenderingContext from '../lib/RenderingContext';
+import ViewMediatorFactory from '../lib/ViewMediatorFactory';
 
 export default class MainView {
 
   constructor(worldModel){
 
     this.worldModel = worldModel;
-    this.mediator = new WorldViewMediator(worldModel);
+    this.mediator = new WorldViewMediator(worldModel, new ViewMediatorFactory());
 
     this.renderingContext = this.createRenderingContext();
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
@@ -25,9 +26,6 @@ export default class MainView {
     return RenderingContext.getDefault(domContainer);
   }
 
-  onFrameRendered() {
-    this.mediator.onFrameRendered();
-  }
 
   onWindowResize(){
     this.renderingContext.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -37,7 +35,7 @@ export default class MainView {
 
   render() {
     //this.renderingContext.controls.update();
-    this.onFrameRendered();
+    this.mediator.onFrameRendered();
     this.renderingContext.renderer.render(this.renderingContext.scene,
                                           this.renderingContext.camera);
     requestAnimationFrame(()=>this.render());

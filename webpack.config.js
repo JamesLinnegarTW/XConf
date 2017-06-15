@@ -28,7 +28,8 @@ module.exports = {
         template: './template.html'
     }),
     new CopyWebpackPlugin([
-      { from: './images', to: './images' }
+      { from: './images', to: './images' },
+      { from: './data', to: './data' }
     ]),
     new CleanPlugin(['dist'])
   ],

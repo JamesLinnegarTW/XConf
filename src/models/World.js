@@ -5,7 +5,8 @@ export default class World extends Observable {
     super();
     this.className = "World";
     this.location = "office-entrance";
-    
+    this.chairs = [];
+    this.consultants = [];
   }
 
   updateLocation(location){
@@ -13,4 +14,13 @@ export default class World extends Observable {
     this.emit('LocationUpdated', location );
   }
 
+  addChair(chair){
+    this.chairs.push(chair);
+    this.emit('ChairAdded', { chair });
+  }
+
+  addConsultants(consultant){
+    this.chairs.push(consultant);
+    this.emit('ConsultantAdded', { consultant });
+  }
 }
