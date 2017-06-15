@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import ViewMediator from "./ViewMediator";
+import WorldViewMediator from "./WorldViewMediator";
 import RenderingContext from '../lib/RenderingContext';
 
 export default class MainView {
@@ -7,7 +7,7 @@ export default class MainView {
   constructor(worldModel){
 
     this.worldModel = worldModel;
-    this.mediator = new ViewMediator(worldModel);
+    this.mediator = new WorldViewMediator(worldModel);
 
     this.renderingContext = this.createRenderingContext();
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);

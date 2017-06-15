@@ -15,17 +15,14 @@ export default class RenderingContext {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const ambientLight = new THREE.AmbientLight(0xffffff);
 
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
 
     camera.target = new THREE.Vector3(0, 0, 0);
     camera.lookAt(camera.target);
-
-
-    const ambientLight = new THREE.AmbientLight(0xffffff);
     scene.add(ambientLight);
-
 
     containerElement.appendChild(renderer.domElement);
 
