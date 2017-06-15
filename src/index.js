@@ -1,12 +1,40 @@
+import * as THREE from 'three'
 import _ from 'lodash';
 
-function component () {
-  var element = document.createElement('div');
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(
+  75,                                     // Field of View
+  window.innerWidth / window.innerHeight, // aspect ratio
+  0.1,                                    // near clipping plane
+  1000                                    // far clipping plane
+);
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+var renderer = new THREE.WebGLRenderer({
+  alpha: true,     // transparent background
+  antialias: true // smooth edges
+});
 
-  return element;
-}
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-document.body.appendChild(component());
+
+
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+var material = new THREE.MeshNormalMaterial();
+var colourMaterial = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+
+var cube = new THREE.Mesh(geometry, colourMaterial);
+scene.add(cube);
+
+camera.position.z = 5; // move camera back so we can see the cube
+
+var render = function() {
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+
+  // rotate cube a little each frame
+  cube.rotation.x += 0.05;
+  cube.rotation.y += 0.05;
+};
+
+render();
