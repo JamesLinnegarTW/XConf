@@ -47,6 +47,7 @@ export default class MainView {
   }
 
   onFrameRendered() {
+    // something
   }
 
   onWindowResize(){
@@ -56,7 +57,7 @@ export default class MainView {
   }
 
   render() {
-    //this.renderingContext.controls.update();
+    this.renderingContext.controls.update();
     this.onFrameRendered();
     this.renderingContext.renderer.render(this.renderingContext.scene,
                                           this.renderingContext.camera);

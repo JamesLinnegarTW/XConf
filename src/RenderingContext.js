@@ -1,11 +1,13 @@
 import * as THREE from 'three';
+import DeviceOrientationControls from 'three-device-orientation';
+
 
 export default class RenderingContext {
   constructor(scene, camera, renderer) {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
-    //this.controls = new THREE.DeviceOrientationControls( this.camera );
+    this.controls = new DeviceOrientationControls( this.camera );
   }
 
   static getDefault(containerElement) {
