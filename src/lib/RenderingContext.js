@@ -13,7 +13,7 @@ export default class RenderingContext {
   static getDefault(containerElement) {
     const width = window.innerWidth, height = window.innerHeight;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1100);
+    const camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
     renderer.setPixelRatio(window.devicePixelRatio);

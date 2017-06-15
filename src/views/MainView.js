@@ -1,44 +1,23 @@
 import * as THREE from 'three';
-
-
-import RenderingContext from './RenderingContext';
+import ViewMediator from "./ViewMediator";
+import RenderingContext from '../lib/RenderingContext';
 
 export default class MainView {
-  constructor(){
+
+  constructor(worldModel){
+
+    this.worldModel = worldModel;
+    this.mediator = new ViewMediator(worldModel);
+
     this.renderingContext = this.createRenderingContext();
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
   }
 
   initialize() {
     const scene = this.renderingContext.scene;
-    scene.add(this.createWorld());
-    scene.add(this.createCube());
+    scene.add(this.mediator.object3D);
     this.render();
   }
-
-  createCube(){
-    const geometry = new THREE.BoxGeometry(1, 3, 1);
-    const material = new THREE.MeshNormalMaterial();
-
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.z = -5;
-    return cube;
-  }
-
-  createWorld(){
-    const geometry = new THREE.SphereGeometry(500, 60, 40);
-    const texture = new THREE.TextureLoader().load('/pano1.jpg');
-    const material = new THREE.MeshLambertMaterial(
-      { map: texture,
-        side: THREE.DoubleSide }
-      );
-    let material_color = new THREE.MeshBasicMaterial( {color: 0xffff00,   side: THREE.DoubleSide} );
-
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.z= -5;
-    return mesh;
-  }
-
 
   createRenderingContext() {
     const domContainer = document.createElement('div');
@@ -47,7 +26,7 @@ export default class MainView {
   }
 
   onFrameRendered() {
-    // something
+    this.mediator.onFrameRendered();
   }
 
   onWindowResize(){
@@ -57,7 +36,7 @@ export default class MainView {
   }
 
   render() {
-    this.renderingContext.controls.update();
+    //this.renderingContext.controls.update();
     this.onFrameRendered();
     this.renderingContext.renderer.render(this.renderingContext.scene,
                                           this.renderingContext.camera);

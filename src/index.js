@@ -1,3 +1,7 @@
-import MainView from './MainView';
+import WorldController from './controllers/WorldController';
 
-new MainView().initialize();
+const controller = new WorldController();
+
+setTimeout(()=> {
+  controller.setLocation("office-kitchen");
+}, 5000);
