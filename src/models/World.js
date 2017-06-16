@@ -7,11 +7,17 @@ export default class World extends Observable {
     this.location = "office-entrance";
     this.chairs = [];
     this.consultants = [];
+    this.walls = [];
   }
 
   updateLocation(location){
     this.location = location;
     this.emit('LocationUpdated', location );
+  }
+
+  addWall(wall) {
+    this.walls.push(wall);
+    this.emit('WallAdded', { wall });
   }
 
   addChair(chair){

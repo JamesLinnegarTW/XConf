@@ -13,7 +13,7 @@ export default class WorldViewMediator extends ViewMediator {
     this.world.addObserver("LocationUpdated", (e) => this.loadBackground(e));
     this.world.addObserver("ChairAdded", (e) => this.onChairAdded(e));
     this.world.addObserver("ConsultantAdded", (e) => this.onConsultantAdded(e));
-
+    this.world.addObserver("WallAdded", (e) => this.onWallAdded(e));
 
   }
 
@@ -46,6 +46,10 @@ export default class WorldViewMediator extends ViewMediator {
     this.addChild(e.consultant);
   }
 
+  onWallAdded(e) {
+    console.log('wall added');
+    this.addChild(e.wall);
+  }
 
 
 }
