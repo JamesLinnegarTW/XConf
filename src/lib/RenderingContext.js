@@ -20,7 +20,7 @@ export default class RenderingContext {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
 
-    camera.target = new THREE.Vector3(0, 0, 0);
+    camera.target = new THREE.Vector3(-5, 0, 0);
     camera.lookAt(camera.target);
     //scene.add(ambientLight);
 

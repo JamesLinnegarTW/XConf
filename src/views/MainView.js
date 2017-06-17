@@ -34,7 +34,7 @@ export default class MainView {
   }
 
   render() {
-    this.renderingContext.controls.update();
+  //  this.renderingContext.controls.update();
     this.mediator.onFrameRendered();
     this.renderingContext.renderer.render(this.renderingContext.scene,
                                           this.renderingContext.camera);

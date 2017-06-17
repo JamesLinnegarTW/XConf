@@ -16,12 +16,18 @@ export default class WorldController {
     this.world.updateLocation(location);
   }
 
-  addChair(){
-    const c = new Chair();
-    this.world.addChair(c);
-    this.world.addWall(new Wall());
-    this.world.addConsultants(new Consultant());
+  pointAt(direction){
+    this.world.pointAt(direction);
+  }
 
+  hideArrow(){
+    this.world.arrow.visible = false;
+  }
+
+  addChair(){
+  //  this.world.addChair(new Chair());
+    this.world.addWall(new Wall());
+  //  this.world.addConsultants(new Consultant());
   }
 
 }

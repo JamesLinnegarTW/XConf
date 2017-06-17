@@ -10,7 +10,7 @@ function bootstrap(){
   });
 
   alexa.connect();
-  controller.addChair();
+
 }
 
 window.onload = bootstrap;

@@ -9,6 +9,8 @@ export default class WorldViewMediator extends ViewMediator {
 
     this.object3D = this.makeObject3D();
 
+    this.arrowViewMediator = this.mediatorFactory.getMediator(world.arrow);
+    this.addChild(world.arrow);
 
     this.world.addObserver("LocationUpdated", (e) => this.loadBackground(e));
     this.world.addObserver("ChairAdded", (e) => this.onChairAdded(e));
@@ -32,6 +34,7 @@ export default class WorldViewMediator extends ViewMediator {
   }
 
   loadBackground(background) {
+    this.model.arrow.visible = false;
     const worldSphere = this.object3D.children[0];
     const location = this.world.loction
     const texture = new THREE.TextureLoader().load('/images/' + background + '.jpeg');

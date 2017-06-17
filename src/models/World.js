@@ -1,4 +1,5 @@
 import Observable from '../lib/Observable';
+import Arrow from './Arrow';
 
 export default class World extends Observable {
   constructor(){
@@ -8,11 +9,17 @@ export default class World extends Observable {
     this.chairs = [];
     this.consultants = [];
     this.walls = [];
+    this.arrow = new Arrow();
   }
 
   updateLocation(location){
     this.location = location;
     this.emit('LocationUpdated', location );
+  }
+
+  pointAt(direction) {
+    this.arrow.direction = direction;
+    this.arrow.visible = true;
   }
 
   addWall(wall) {
@@ -29,4 +36,5 @@ export default class World extends Observable {
     this.chairs.push(consultant);
     this.emit('ConsultantAdded', { consultant });
   }
+
 }
