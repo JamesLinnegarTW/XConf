@@ -51,14 +51,11 @@ export default class WorldViewMediator extends ViewMediator {
   }
 
   onCubeAdded(e){
-    console.log("cube added");
     this.addChild(e.cube);
   }
 
   onWallAdded(e) {
-    console.log('wall added');
     this.addChild(e.wall);
   }
-
 
 }

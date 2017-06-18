@@ -12,7 +12,7 @@ export default class CubeViewMediator extends ViewMediator {
 
     const cube = new THREE.Mesh(
       new THREE.BoxGeometry(1,1,1),
-      new THREE.MeshBasicMaterial( { color: 0xFF00FF })
+      new THREE.MeshBasicMaterial( { color:new THREE.Color().fromArray(this.model.color) })
     );
 
     const vec = new THREE.Vector3();

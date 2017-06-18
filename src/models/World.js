@@ -11,6 +11,7 @@ export default class World extends Observable {
     this.walls = [];
     this.cubes = [];
     this.arrow = new Arrow();
+    this.color = [Math.random(),Math.random(),Math.random()];
   }
 
   updateLocation(location){

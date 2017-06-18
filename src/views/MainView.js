@@ -14,6 +14,7 @@ export default class MainView {
 
     this.controls = new Controls(this.mediator, this.renderingContext);
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
+    window.addEventListener( 'orientationchange' , (e) => this.onWindowResize(), false);
   }
 
   initialize() {
@@ -28,7 +29,8 @@ export default class MainView {
   createRenderingContext() {
     const domContainer = document.createElement('div');
     document.body.appendChild(domContainer);
-    return RenderingContext.getDefault(domContainer);
+    console.log(this.worldModel.color);
+    return RenderingContext.getDefault(domContainer, this.worldModel.color);
   }
 
 
@@ -39,7 +41,7 @@ export default class MainView {
   }
 
   render() {
-  //  this.renderingContext.controls.update();
+    this.renderingContext.controls.update();
     this.mediator.onFrameRendered();
     this.renderingContext.renderer.render(this.renderingContext.scene,
                                           this.renderingContext.camera);

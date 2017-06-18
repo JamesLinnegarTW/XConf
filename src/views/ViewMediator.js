@@ -28,11 +28,8 @@ export default class ViewMediator extends Observable {
   }
 
   addChild(child){
-    console.log(child);
     const mediator = this.mediatorFactory.getMediator(child);
-    console.log(mediator);
     this.childMediators.set(child, mediator);
-    console.log(this.childMediators)
     this.object3D.children[0].add(mediator.object3D);
   }
 }
