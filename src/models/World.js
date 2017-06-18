@@ -9,6 +9,7 @@ export default class World extends Observable {
     this.chairs = [];
     this.consultants = [];
     this.walls = [];
+    this.cubes = [];
     this.arrow = new Arrow();
   }
 
@@ -20,6 +21,11 @@ export default class World extends Observable {
   pointAt(direction) {
     this.arrow.direction = direction;
     this.arrow.visible = true;
+  }
+
+  addCube(cube){
+      this.cubes.push(cube);
+      this.emit('CubeAdded', { cube });
   }
 
   addWall(wall) {

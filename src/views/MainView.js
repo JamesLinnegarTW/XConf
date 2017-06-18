@@ -2,19 +2,24 @@ import * as THREE from 'three';
 import WorldViewMediator from "./WorldViewMediator";
 import RenderingContext from '../lib/RenderingContext';
 import ViewMediatorFactory from '../lib/ViewMediatorFactory';
+import Controls from '../lib/Controls';
 
 export default class MainView {
 
-  constructor(worldModel){
-
+  constructor(controller, worldModel){
+    this.controller = controller;
     this.worldModel = worldModel;
     this.mediator = new WorldViewMediator(worldModel, new ViewMediatorFactory());
-
     this.renderingContext = this.createRenderingContext();
+
+    this.controls = new Controls(this.mediator, this.renderingContext);
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
   }
 
   initialize() {
+    this.controls.initialize();
+    this.controls.addObserver('click', (e)=>this.controller.onClick(e));
+
     const scene = this.renderingContext.scene;
     scene.add(this.mediator.object3D);
     this.render();

@@ -32,7 +32,7 @@ export default class Alexa {
 
       this.ws.onmessage = (e)=> {
         this.handleMessage(e);
-      }
+      };
     }
 
 
@@ -56,6 +56,10 @@ export default class Alexa {
             func: func
         });
         return token;
+    }
+
+    send(message) {
+      this.ws.send(message);
     }
 
     publish(topic, args) {
