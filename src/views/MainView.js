@@ -3,6 +3,7 @@ import WorldViewMediator from "./WorldViewMediator";
 import RenderingContext from '../lib/RenderingContext';
 import ViewMediatorFactory from '../lib/ViewMediatorFactory';
 import Controls from '../lib/Controls';
+import * as webvrui from 'webvr-ui';
 
 export default class MainView {
 
@@ -11,6 +12,11 @@ export default class MainView {
     this.worldModel = worldModel;
     this.mediator = new WorldViewMediator(worldModel, new ViewMediatorFactory());
     this.renderingContext = this.createRenderingContext();
+
+
+    var options = {}
+    var enterVR = new webvrui.EnterVRButton(this.renderingContext.renderer.domElement, options);
+    document.body.appendChild(enterVR.domElement);
 
     this.controls = new Controls(this.mediator, this.renderingContext);
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
@@ -40,11 +46,14 @@ export default class MainView {
     this.renderingContext.camera.updateProjectionMatrix();
   }
 
-  render() {
+  render(timestamp) {
     this.renderingContext.controls.update();
     this.mediator.onFrameRendered();
-    this.renderingContext.renderer.render(this.renderingContext.scene,
-                                          this.renderingContext.camera);
+
+
+    this.renderingContext.manager.render(this.renderingContext.scene,
+                                        this.renderingContext.camera,
+                                        timestamp);
     requestAnimationFrame(()=>this.render());
 
   }

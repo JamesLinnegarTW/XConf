@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-import DeviceOrientationControls from 'three-device-orientation';
 
 
 export default class RenderingContext {
@@ -7,7 +5,13 @@ export default class RenderingContext {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
-    this.controls = new DeviceOrientationControls( this.camera );
+    this.controls = new THREE.VRControls(this.camera);
+
+    this.effect = new THREE.VREffect(this.renderer);
+    this.effect.setSize(window.innerWidth, window.innerHeight);
+
+    this.manager = new WebVRManager(this.renderer, this.effect, {hideButton: false, isUndistorted:false});
+
   }
 
   static getDefault(containerElement, color = [0, 0, 0]) {

@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import ViewMediator from './ViewMediator';
 
 export default class WorldViewMediator extends ViewMediator {

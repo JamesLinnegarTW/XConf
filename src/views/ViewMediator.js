@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import Observable from '../lib/Observable';
 
 export default class ViewMediator extends Observable {

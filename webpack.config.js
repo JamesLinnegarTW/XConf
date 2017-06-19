@@ -8,7 +8,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: appPath,
-  entry: './index.js',
+  entry: [
+    'webvr-polyfill/build/webvr-polyfill',
+    'three/examples/js/controls/VRControls',
+    'three/examples/js/effects/VREffect',
+    './index.js'],
   output: {
     filename: 'bundle.js',
     path: distPath
@@ -31,25 +35,28 @@ module.exports = {
       { from: './images', to: './images' },
       { from: './data', to: './data' }
     ]),
+    new webpack.ProvidePlugin({
+      'THREE': 'three',
+      'WebVRManager': 'webvr-boilerplate/build/webvr-manager'
+    }),
     new CleanPlugin(['dist'])
   ],
 
   module: {
-		rules: [
-			{
-				test: /\.js$/,
-				include: [
-					path.resolve(__dirname, 'src')
-				],
-				loader: 'babel-loader',
-				query: {
-					compact: true,
-					presets: [
-						['es2015', {modules: false}]
-					]
-				}
-			}
-		]
+    noParse: /node_modules\/webvr-polyfill\/build/,
+		loaders: [
+      {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          include: [
+              path.resolve(__dirname, 'src')
+          ],
+          query: {
+              presets: ['es2015']
+          }
+      }
+    ]
+
 	}
 
 };

@@ -1,5 +1,4 @@
 import Observable from './Observable';
-import * as THREE from 'three';
 
 export default class Controls extends Observable {
   constructor(mediator, renderingContext){
