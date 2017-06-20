@@ -14,48 +14,63 @@ export default class MainView {
     this.renderingContext = this.createRenderingContext();
 
 
-    var options = {}
-    var enterVR = new webvrui.EnterVRButton(this.renderingContext.renderer.domElement, options);
-    document.body.appendChild(enterVR.domElement);
+    //var options = {}
+    //var enterVR = new webvrui.EnterVRButton(this.renderingContext.renderer.domElement, options);
+    //document.body.appendChild(enterVR.domElement);
 
     this.controls = new Controls(this.mediator, this.renderingContext);
-    window.addEventListener( 'resize' , (e) => this.onWindowResize(), false);
-    window.addEventListener( 'orientationchange' , (e) => this.onWindowResize(), false);
+    window.addEventListener( 'resize' , (e) => this.onWindowResize(), true);
+    window.addEventListener('vrdisplaypresentchange', (e) => this.onWindowResize(), true);
+    window.addEventListener( 'orientationchange' , (e) => this.onWindowResize(), true);
   }
 
   initialize() {
+
     this.controls.initialize();
     this.controls.addObserver('click', (e)=>this.controller.onClick(e));
 
     const scene = this.renderingContext.scene;
     scene.add(this.mediator.object3D);
-    this.render();
+    // Get the VRDisplay and save it for later.
+    this.vrDisplay = null;
+    navigator.getVRDisplays().then((displays)=> {
+      if (displays.length > 0) {
+        this.vrDisplay = displays[0];
+        console.log(this);
+        // Kick off the render loop.
+        this.vrDisplay.requestAnimationFrame(()=>{ this.render() });
+      }
+    });
+
+
   }
 
   createRenderingContext() {
     const domContainer = document.createElement('div');
     document.body.appendChild(domContainer);
-    console.log(this.worldModel.color);
     return RenderingContext.getDefault(domContainer, this.worldModel.color);
   }
 
 
   onWindowResize(){
+
+    console.log('Resizing to %s x %s.', window.innerWidth, window.innerHeight);
+
+    this.renderingContext.effect.setSize(window.innerWidth, window.innerHeight);
     this.renderingContext.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderingContext.camera.aspect = window.innerWidth / window.innerHeight;
     this.renderingContext.camera.updateProjectionMatrix();
   }
 
   render(timestamp) {
+
     this.renderingContext.controls.update();
     this.mediator.onFrameRendered();
 
-
-    this.renderingContext.manager.render(this.renderingContext.scene,
+    this.renderingContext.effect.render(this.renderingContext.scene,
                                         this.renderingContext.camera,
                                         timestamp);
-    requestAnimationFrame(()=>this.render());
-
+    this.vrDisplay.requestAnimationFrame(()=>{this.render()});
   }
 
 }

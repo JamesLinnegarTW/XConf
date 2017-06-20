@@ -21,6 +21,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
+    host:'0.0.0.0',
+    disableHostCheck: true,
     port: 8080
   },
 
@@ -36,8 +38,7 @@ module.exports = {
       { from: './data', to: './data' }
     ]),
     new webpack.ProvidePlugin({
-      'THREE': 'three',
-      'WebVRManager': 'webvr-boilerplate/build/webvr-manager'
+      'THREE': 'three'
     }),
     new CleanPlugin(['dist'])
   ],

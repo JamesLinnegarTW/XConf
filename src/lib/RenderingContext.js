@@ -9,9 +9,6 @@ export default class RenderingContext {
 
     this.effect = new THREE.VREffect(this.renderer);
     this.effect.setSize(window.innerWidth, window.innerHeight);
-
-    this.manager = new WebVRManager(this.renderer, this.effect, {hideButton: false, isUndistorted:false});
-
   }
 
   static getDefault(containerElement, color = [0, 0, 0]) {
@@ -19,24 +16,25 @@ export default class RenderingContext {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  //  const ambientLight = new THREE.AmbientLight(0xffffff);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
 
     renderer.setPixelRatio(window.devicePixelRatio);
+
     renderer.setSize(width, height);
 
     camera.target = new THREE.Vector3(-5, 0, 0);
     camera.lookAt(camera.target);
     console.log(color);
     const meshColor = new THREE.Color().fromArray(color);
-    const cube = new THREE.Mesh(
-      new THREE.BoxGeometry(0.1,0.1,0.1),
+    const pointer = new THREE.Mesh(
+      new THREE.SphereGeometry(0.05,16,16),
       new THREE.MeshBasicMaterial( {color:  meshColor } )
     );
 
-    cube.position.z = -10;
-    camera.add(cube);
+    pointer.position.z = -5;
+    camera.add(pointer);
     scene.add(camera);
-    //scene.add(ambientLight);
+    scene.add(ambientLight);
 
     containerElement.appendChild(renderer.domElement);
 

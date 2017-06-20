@@ -18,12 +18,12 @@ export default class ViewMediator extends Observable {
 
   onFrameRendered() {
     try {
-    for (const childMediator of this.childMediators.values()) {
-      childMediator.onFrameRendered();
+      for (const childMediator of this.childMediators.values()) {
+        childMediator.onFrameRendered();
+      }
+    }catch(e){
+      //console.warn(e);
     }
-  }catch(e){
-    //console.warn(e);
-  }
   }
 
   addChild(child){
