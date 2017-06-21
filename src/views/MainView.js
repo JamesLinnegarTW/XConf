@@ -13,12 +13,10 @@ export default class MainView {
     this.mediator = new WorldViewMediator(worldModel, new ViewMediatorFactory());
     this.renderingContext = this.createRenderingContext();
 
-
-    //var options = {}
-    //var enterVR = new webvrui.EnterVRButton(this.renderingContext.renderer.domElement, options);
-    //document.body.appendChild(enterVR.domElement);
-
     this.controls = new Controls(this.mediator, this.renderingContext);
+
+
+    this.setUpVRButton()
     window.addEventListener( 'resize' , (e) => this.onWindowResize(), true);
     window.addEventListener('vrdisplaypresentchange', (e) => this.onWindowResize(), true);
     window.addEventListener( 'orientationchange' , (e) => this.onWindowResize(), true);
@@ -41,8 +39,29 @@ export default class MainView {
         this.vrDisplay.requestAnimationFrame(()=>{ this.render() });
       }
     });
+  }
 
-
+  setUpVRButton(){
+    const options = {
+        color: 'black',
+        background: 'white',
+        corners: 'square'
+      };
+    const enterVRButton = new webvrui.EnterVRButton(this.renderingContext.renderer.domElement, options);
+    enterVRButton.on('exit', () => {
+      this.renderingContext.camera.quaternion.set(0, 0, 0, 1);
+      camera.position.set(0, controls.userHeight, 0);
+    });
+    enterVRButton.on('hide', ()=> {
+      document.getElementById('ui').style.display = 'none';
+    });
+    enterVRButton.on('show', () => {
+      document.getElementById('ui').style.display = 'inherit';
+    });
+    document.getElementById('vr-button').appendChild(enterVRButton.domElement);
+    document.getElementById('no-vr').addEventListener('click', ()=> {
+      enterVRButton.requestEnterFullscreen();
+    });
   }
 
   createRenderingContext() {

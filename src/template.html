@@ -8,18 +8,36 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
-      html, body {
-          margin: 0;
-          padding: 0;
-      }
-      body {
-          overflow: hidden;
-          background-color: #000;
-          width: 100%;
-          height: 100%;
-      }
-    </style>
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      color: #fff;
+      margin: 0px;
+      padding: 0;
+      overflow: hidden;
+    }
+    #ui {
+     position: absolute;
+     bottom: 10px;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     font-family: 'Karla', sans-serif;
+     z-index: 1;
+    }
+    a#no-vr {
+     display: block;
+     color: white;
+     margin-top: 1em;
+    }
+        </style>
+
   </head>
   <body>
+    <div id="ui">
+      <div id="vr-button"></div>
+      <a id="no-vr" href="#">Try without a headset</a>
+    </div>
   </body>
 </html>
