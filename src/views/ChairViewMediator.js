@@ -10,18 +10,17 @@ export default class ChairViewMediator extends ViewMediator {
 
     var loader = new THREE.ObjectLoader();
     loader.load('/data/objects/chair.json', function(object){
-      object.scale.multiplyScalar(0.7);
-      object.position.set(0, -50, -150);
-      object.rotateY(THREE.Math.degToRad(45));
-
       container.add(object);
     });
+
+    container.scale.multiplyScalar(0.20);
+    container.position.set(2, -11, 30);
+    container.rotateY(THREE.Math.degToRad(270));
 
     return container;
   }
 
     onFrameRendered() {
       super.onFrameRendered();
-      //this.object3D.children[0].rotation.y += 0.01;
     }
 }

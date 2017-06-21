@@ -19,18 +19,17 @@ export default class WorldController {
     this.alexa.addObserver('scene', (data)=>this.setLocation(data));
     this.alexa.addObserver('box', (data)=>this.addCube(data));
     this.alexa.addObserver('connect', ()=>{console.log('connected')});
-    this.alexa.addObserver('object', (message, data)=>{ });
-    this.alexa.addObserver('clear', this.clear);
+    this.alexa.addObserver('object', (data)=>{ this.createObject(data);});
+    this.alexa.addObserver('clear', ()=> this.clear() );
+    this.alexa.addObserver('point', (data)=> this.pointAt(data) );
 
     this.alexa.connect();
-
-    this.addWall();
-    this.addTable();
-    this.addConsultant();
-
+    this.createObject("chair");
+    this.createObject("table");
   }
 
   setLocation(location){
+    this.clear();
     this.world.updateLocation(location);
   }
 
@@ -41,22 +40,34 @@ export default class WorldController {
   hideArrow(){
     this.world.arrow.visible = false;
   }
+  createObject(objectType ){
+    let object;
 
-  addWall(){
-    this.world.addObject(new Wall());
+    switch(objectType){
+      case 'wall':
+        object = new Wall();
+        break;
+      case 'chair':
+          object = new Chair();
+          break;
+      case 'table':
+          object = new Table();
+          break;
+      case 'consultant':
+          object = new Consultant();
+          break;
+      default:
+        console.log("No object type provided");
+    }
+    if(object) this.world.addObject(object);
+
   }
 
-  addTable(){
-    this.world.addObject(new Table());
-  }
 
   addCube(data = { "vector":undefined, "color":undefined}){
     this.world.addObject(new Cube(data.vector, data.color));
   }
 
-  addConsultant(){
-    this.world.addObject(new Consultant());
-  }
   clear(){
     this.world.clearObjects();
   }

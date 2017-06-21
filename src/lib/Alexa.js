@@ -52,7 +52,7 @@ export default class Alexa extends Observable {
 
     handleMessage(message){
       try {
-
+        console.log(message);
   		    var contents = JSON.parse(message.data);
           this.emit( contents.type, contents.data );
         }
