@@ -4,6 +4,7 @@ import Chair from '../models/Chair.js';
 import Consultant from '../models/Consultant';
 import Wall from '../models/Wall';
 import Cube from '../models/Cube';
+import Table from '../models/Table';
 import Alexa from '../lib/Alexa';
 
 export default class WorldController {
@@ -17,7 +18,15 @@ export default class WorldController {
 
     this.alexa.addObserver('scene', (data)=>this.setLocation(data));
     this.alexa.addObserver('box', (data)=>this.addCube(data));
+    this.alexa.addObserver('connect', ()=>{console.log('connected')});
+    this.alexa.addObserver('object', (message, data)=>{ });
+    this.alexa.addObserver('clear', this.clear);
+
     this.alexa.connect();
+
+    this.addWall();
+    this.addTable();
+    this.addConsultant();
 
   }
 
@@ -33,16 +42,27 @@ export default class WorldController {
     this.world.arrow.visible = false;
   }
 
-  addChair(){
-    this.world.addWall(new Wall());
+  addWall(){
+    this.world.addObject(new Wall());
   }
 
-  addCube(data){
-    this.world.addCube(new Cube(data.vector, data.color));
+  addTable(){
+    this.world.addObject(new Table());
+  }
+
+  addCube(data = { "vector":undefined, "color":undefined}){
+    this.world.addObject(new Cube(data.vector, data.color));
+  }
+
+  addConsultant(){
+    this.world.addObject(new Consultant());
+  }
+  clear(){
+    this.world.clearObjects();
   }
 
   onClick(vector){
-    this.world.addCube(new Cube(vector, this.world.color));
+    this.world.addObject(new Cube(vector, this.world.color));
     this.alexa.send(JSON.stringify({"type":"box", "data":{"vector":vector, "color": this.world.color}}));
   }
 

@@ -145,32 +145,6 @@
                 "aspect": 1.77778,
                 "fov": 38.6274
             }]
-        },{
-            "name": "LightPreset",
-            "uuid": "1783D250-7BC6-30D0-B7CB-5461D8774CE2",
-            "matrix": [-1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1],
-            "visible": true,
-            "type": "Object",
-            "children": [{
-                "name": "Sky_Light",
-                "uuid": "E6F99E53-23B9-39E5-916A-A64B3E57B841",
-                "matrix": [1,0,0,0,0,-0,1,0,0,-1,-0,0,0,0,0,1],
-                "visible": true,
-                "type": "HemisphereLight",
-                "color": 3376639,
-                "intensity": 0.6,
-                "distance": 0
-            },{
-                "name": "Sun_Light",
-                "uuid": "69DB222B-E563-3717-AE1D-6F4304516F23",
-                "matrix": [0.863248,-0.444444,0.239316,0,0.239316,0.777778,0.581196,0,-0.444444,-0.444444,0.777778,0,-4,-4,7,1],
-                "visible": true,
-                "type": "DirectionalLight",
-                "castShadow": false,
-                "color": 16774373,
-                "intensity": 1,
-                "distance": 0
-            }]
         }],
         "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
         "uuid": "01663B8D-92AB-42AF-A07A-D8A01D4D6FE2"

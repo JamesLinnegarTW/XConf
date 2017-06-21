@@ -16,7 +16,7 @@ export default class RenderingContext {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    const ambientLight = new THREE.AmbientLight(0xffffff);
+   const ambientLight = new THREE.AmbientLight(0xffffff);
 
     renderer.setPixelRatio(window.devicePixelRatio);
 

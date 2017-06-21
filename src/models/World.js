@@ -6,10 +6,7 @@ export default class World extends Observable {
     super();
     this.className = "World";
     this.location = "office-entrance";
-    this.chairs = [];
-    this.consultants = [];
-    this.walls = [];
-    this.cubes = [];
+    this.objects = [];
     this.arrow = new Arrow();
     this.color = [Math.random(),Math.random(),Math.random()];
   }
@@ -24,24 +21,17 @@ export default class World extends Observable {
     this.arrow.visible = true;
   }
 
-  addCube(cube){
-      this.cubes.push(cube);
-      this.emit('CubeAdded', { cube });
+  addObject(object){
+      this.objects.push(object);
+      this.emit('ObjectAdded', object );
   }
 
-  addWall(wall) {
-    this.walls.push(wall);
-    this.emit('WallAdded', { wall });
-  }
-
-  addChair(chair){
-    this.chairs.push(chair);
-    this.emit('ChairAdded', { chair });
-  }
-
-  addConsultants(consultant){
-    this.chairs.push(consultant);
-    this.emit('ConsultantAdded', { consultant });
+  clearObjects(){
+    this.arrow.visible = false;
+    this.objects.forEach((object)=>{
+      this.emit('ObjectRemoved', object);
+    })
+    this.objects = [];
   }
 
 }

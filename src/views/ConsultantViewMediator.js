@@ -14,8 +14,9 @@ export default class ConsultantViewMediator extends ViewMediator {
     });
 
     container.scale.multiplyScalar(0.08);
-    container.position.set(-5, -11, -20);
+    container.position.set(-20, -11, -5);
     container.rotateY(THREE.Math.degToRad(185));
+    container.rotateX(THREE.Math.degToRad(-10));
 
     return container;
   }
