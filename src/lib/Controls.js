@@ -9,9 +9,9 @@ export default class Controls extends Observable {
   }
 
   initialize(){
-    this.renderingContext.renderer.domElement.addEventListener('mousedown', (e) => this.onStart(e));
-    this.renderingContext.renderer.domElement.addEventListener('mouseup', (e) => this.onEnd(e));
-    this.renderingContext.renderer.domElement.addEventListener('mousemove', (e) => this.onMove(e));
+    // this.renderingContext.renderer.domElement.addEventListener('mousedown', (e) => this.onStart(e));
+    // this.renderingContext.renderer.domElement.addEventListener('mouseup', (e) => this.onEnd(e));
+    // this.renderingContext.renderer.domElement.addEventListener('mousemove', (e) => this.onMove(e));
 
     this.renderingContext.renderer.domElement.addEventListener('touchstart', (e) => this.onStart(e));
     this.renderingContext.renderer.domElement.addEventListener('touchend', (e) => this.onEnd(e));
