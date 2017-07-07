@@ -35,7 +35,10 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './images', to: './images' },
-      { from: './data', to: './data' }
+      { from: './data', to: './data' },
+      { from: './fonts', to:'./fonts'},
+      { from: './presentation', to:'./presentation'},
+      { from: './tramchester', to:'./tramchester'}
     ]),
     new webpack.ProvidePlugin({
       'THREE': 'three'

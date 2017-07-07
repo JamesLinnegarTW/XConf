@@ -9,6 +9,7 @@ export default class World extends Observable {
     this.objects = [];
     this.arrow = new Arrow();
     this.color = [Math.random(),Math.random(),Math.random()];
+    this.clickMode = false;
   }
 
   updateLocation(location){

@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Evolutionary Interfaces</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/thoughtworks.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="/tramchester/css/stylesheet.css">
+	<style>
+		.voice-icons {
+			text-align: center;
+		}
+		.voice-icons img {
+			width:20%;
+
+		}
+		.slide-background.present::before {
+		  content: "Hamburg";
+		}
+		</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section  class="xconf-orange" data-background-image="images/xconf/orange.png" data-background-size="200%" data-background-position="-10% 50%">
+				<h1>Evolutionary Interfaces</h1>
+				<p>James Linnegar</p>
+				<p><em>XConf 2017</em></p>
+			</section>
+			<section>
+				<h1>Me</h1>
+			</section>
+			<section class="xconf-orange">
+				<p class="featured-quote small">
+					Each of the components of our hardware had a reliability requirement of 0.99996, which means that you have four failures in 100,000 operations.
+				</p>
+				<p><strong>Neil Armstrong</strong> <span>Spaceman</span></p>
+			</section>
+
+			<section class="xconf-orange">
+				<h2>What is a user interface?</h2>
+			</section>
+			<section class="xconf-orange">
+				<img src="images/xconf.png"/></section>
+			<section class="xconf-orange"><h1>Apps</h1></section>
+			<section class="xconf-orange"><h1>Wearables</h1></section>
+			<section class="xconf-orange invert" data-background-image="images/arduino.jpg"></section>
+			<section class="xconf-orange">
+				<h2>Input / Output</h2>
+			</section>
+			<section class="xconf-orange">
+				<h2>Intent / Objective</h2>
+			</section>
+			<section class="xconf-orange">
+				<img src="images/interact.jpg" />
+				<p><small><a href="https://www.thoughtworks.com/insights/blog/interact-or-die-trying">Interact or Die Trying - Neil Redding</a></small></p>
+			</section>
+
+
+			<section class="xconf-blue" data-background-image="images/xconf/blue.png" data-background-size="200%" data-background-position="-10% 50%">
+				<h1>Voice</h1>
+			</section>
+
+			<section class="xconf-blue">
+				<div class="voice-icons">
+					<img src="images/ok-google.png"/>
+					<img src="images/alexa.png"/>
+					<img src="images/cortana.jpg"/>
+					<img src="images/siri.png"/>
+				</div>
+			</section>
+			<section class="xconf-blue invert" data-background-image="images/google_voice.jpg"></section>
+			<section class="xconf-blue" data-background-image="images/alexa.jpg"></section>
+			<section class="xconf-blue">
+				<h2>How do I build a Voice interface?</h2></section>
+
+			<section class="xconf-blue">
+				<h2>Invocation &amp; Input</h2></section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote"><strong>Alexa</strong>...</p>
+			</section>
+
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, <strong>what is in my shopping list?</strong></p>
+			</section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, ask <strong><em>My Skill</em> a question</strong></p>
+			</section>
+
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, open <strong>XConf</strong></p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, ask XConf <strong>what is the capital of Australia?</strong></p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, ask XConf what is the capital of <strong>Germany</strong>?</p>
+			</section>
+
+
+			<section class="xconf-blue">
+				<img src="images/utterances.png" />
+			</section>
+
+
+			<section class="xconf-blue">
+				<h2>How does it respond?</h2>
+			</section>
+			<section class="xconf-blue">
+				<h2>Text, SSML &amp; Mp3</h2>
+			</section>
+			<section class="xconf-blue">
+				<h2>SSML?</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote"><strong>Not again.</strong> I don't know where your
+					<strong>f*****g</strong> keys are.
+					<strong>OK?</strong></p>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>Tell &amp; Ask</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>Transactional or Conversational?</h2></section>
+
+			<section class="xconf-blue">
+				<h2>Transactional</h2></section>
+
+			<section  class="xconf-blue">
+					<img src="images/network-map.png" />
+				</section>
+
+			<section class="xconf-blue">
+				<h2><span class="tramchester">Tramchester</span></h2></section>
+
+			<section class="xconf-blue">
+				<img src="images/tramchester-web.png" width="35%" />
+			</section>
+
+			<section>
+				<section class="xconf-blue">
+					<p class="alexa featured-quote">Alexa, tell <strong>Tramchester</strong> I want to go from <strong>Piccadilly</strong> to <strong>Chorlton</strong> at <strong>16:15</strong> <strong>today</strong>.</p>
+				</section>
+				<section class="xconf-blue" data-background-video="video/pic-chorlton-time-date.mov"></section>
+			</section>
+			<section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, tell <strong>Tramchester</strong> I want to go from <strong>Piccadilly</strong> to <strong>Chorlton</strong> at <strong>16:15</strong>.</p>
+			</section>
+			<section class="xconf-blue" data-background-video="video/pic-chorlton-time.mov"></section>
+			</section>
+			<section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, ask Tramchester when is the <em>next</em> tram from <strong>Piccadilly</strong> to <strong>Chorlton</strong>?</p>
+			</section>
+			<section class="xconf-blue" data-background-video="video/next-tram.mov"></section>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>Basic request response</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>Conversational</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<ul class="conversation">
+					<li><span class="alexa">Alexa, open National Rail</span></li>
+					<li><span class="alexa">Welcome to National rail, would you like to...</span></li>
+					<li><span class="alexa">Check information for a new trip</span></li>
+					<li><span class="alexa">Ok what is your departure station?</span></li>
+					<li><span class="alexa">Victoria</span></li>
+					<li><span class="alexa">I heard London Victoria is that correct?</span></li>
+					<li><span class="alexa">No...</span></li>
+				</ul>
+			</section>
+			<section class="xconf-blue">
+				<h2>Argh.</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">How is my commute?</p>
+			</section>
+			<section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote"><strong>Alexa</strong>, tell <strong>Tramchester</strong> to set my home station to <strong>Piccadilly</strong>.</p>
+			</section>
+			<section class="xconf-blue" data-background-video="video/set-home-station.mov"></section>
+			</section>
+			<section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote"><strong>Alexa</strong>, ask <strong>Tramchester</strong> when is the next tram to <strong>Chorlton</strong>?</p>
+			</section>
+			<section class="xconf-blue" data-background-video="video/next-to-chorlton.mov"></section>
+			</section>
+			<section class="xconf-blue">
+				<h2>Conversation to set up.<br /><br /> Transaction to get quick updates.</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>What is an apropriate response?</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">There is a tram from <strong>Piccadilly</strong> to <strong>Deansgate Castlefield</strong> leaving at <strong>13:40</strong>. Change at <strong>Piccadilly Gardens</strong> and <strong>St Peters Square</strong>. You should arrive at <strong>15:43</strong>.</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, tell Tramchester to <em>text me</em> the next tram to <strong>Bury</strong>.</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Where is <strong>Bury</strong> station?</p>
+			</section>
+
+			<section  class="xconf-blue">
+				<section  class="xconf-blue" data-background-color="#ffffff">
+					<iframe class="stretch" data-src="/tramchester/"></iframe>
+				</section>
+
+				<section class="xconf-blue">
+					<img src="images/tramchester-backup.png" />
+				</section>
+
+				<section class="xconf-blue">
+
+					<img src="images/tramchester-backup2.png" />
+				</section>
+
+				<section class="xconf-blue">
+
+					<img src="images/tramchester-backup3.png" />
+				</section>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>Have I put a view on a voice interface... <br />
+					<br />...or a voice interface on a view?</h2>
+			</section>
+
+			<section class="xconf-blue" data-background-image="images/alexa-echo-show.jpg"></section>
+
+
+			<section class="xconf-blue">
+				<h2>Lessons Learnt?</h2></section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Trump Chester?....</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Baguely?....</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">I'm sorry I do not recognise the station <strong>Deansgate Castlefield tonight</strong>.</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Is it natural enough?</p>
+			</section>
+
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Tone of voice?
+			</section>
+
+			<section class="xconf-blue">
+				<h2>1. What is the simplest question my app can answer?</h2>
+			</section>
+			<section class="xconf-blue">
+				<h2>2. How do people <em>actually</em> ask that question?</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>3. Consider the situation &amp; the context</h2>
+			</section>
+
+			<section class="xconf-blue">
+				<h2>This area is moving at pace</h2>
+			</section>
+
+			<section  class="xconf-blue">
+				<section class="xconf-blue">
+					<h2>Voice interface over anything?</h2>
+				</section>
+
+				<section class="xconf-blue" data-transition="slide">
+					<h2>Magic.</h2>
+				</section>
+			</section>
+
+
+			<section class="xconf-green" data-background-image="images/xconf/green.png" data-background-size="200%" data-background-position="-10% 50%">
+				<h1>Virtual Reality</h1>
+			</section>
+
+			<section class="xconf-green"><img src="images/virtual-boy.png" /></section>
+			<section class="xconf-green"><img src="images/htc-vive-set.jpg" /></section>
+			<section class="xconf-green" data-background-video="video/google-earth.mp4" data-background-video-loop="loop"></section>
+
+			<section class="xconf-green"><h2>Where do we start?</h2></section>
+			<section class="xconf-green invert" data-background-image="images/towers.png"></section>
+			<section class="xconf-green"><img src="images/towers2.png"></section>
+			<section class="xconf-green invert" data-background-image="images/office-unity.png"></section>
+			<section class="xconf-green invert" data-background-image="images/towers3.png"></section>
+			<section class="xconf-green" data-background-image="images/towers4.png"></section>
+			<section class="xconf-green" data-background-image="images/scale.png"></section>
+
+			<section class="xconf-green">
+				<h2>&pound;/&euro;?</h2></section>
+			<section class="xconf-green"><img src="images/cardboard.png" /></section>
+			<section class="xconf-green"><img src="images/office-cardboard.png"></section>
+			<section class="xconf-green"><img src="images/mri0.png" /></section>
+			<section class="xconf-green"><img src="images/mri.png" /></section>
+			<section class="xconf-green"><img src="images/mri2.png"></section>
+
+
+
+			<section class="xconf-green">
+				<img src="images/webvr.png" />
+			</section>
+			<section class="xconf-green">
+				<img src="images/youtube.png" />
+			</section>
+			<section class="xconf-green" data-background-video="video/360.mp4" data-background-video-loop="loop"></section>
+			<section class="xconf-green invert" data-background-image="images/dales.jpg"></section>
+			<section class="xconf-green">
+				<p>Take someone somewhere they're not</p>
+			</section>
+
+			<section class="xconf-green closer" data-background-image="images/xconf/green45.png" data-background-size="200%" class="closer">
+				<p><i class="fa fa-mobile fa-6" aria-hidden="true"></i></p>
+				<p>www.virtualdarwin.co.uk</p>
+			</section>
+			<section class="xconf-green">
+				<iframe class="stretch" data-src="http://www.virtualdarwin.co.uk/"></iframe>
+			</section>
+			<section class="xconf-blue">
+				<p class="alexa featured-quote">Alexa, tell <strong>office</strong> to add a <strong>cube</strong>.</p>
+			</section>
+			<section class="xconf-blue">
+				<iframe class="stretch" data-src="/"></iframe>
+			</section>
+
+			<section class="xconf-green">
+				<h1>We.<br />
+					    Build.<br />
+							Experiences.<br />
+						</h1>
+			</section>
+
+
+			<section class="xconf-green">
+				<iframe class="stretch" data-src="http://virtualdarwin.co.uk/admin/"></iframe>
+			</section>
+
+			<section class="xconf-orange">
+				<p class="alexa featured-quote">Questions?</p>
+			</section>
+			<section data-background-image="images/xconf/orange45.png" data-background-size="200%" class="closer">
+					<h1>Thank you</h1>
+					<h2>James Linnegar</h2>
+					<p>mailto:j@mes.fyi</p>
+			</section>
+		</div>
+	</div>
+
+
+	<script src="js/reveal.js"></script>
+	<script src="js/Alexa.js"></script>
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true
+		});
+
+		var alexa = new Alexa();
+		alexa.subscribe('slide', function(message, data) {
+			console.log('slide moving ' + data);
+			switch (data) {
+				case 'right':
+					Reveal.right();
+					break;
+				case 'left':
+					Reveal.left();
+					break;
+				case 'down':
+					Reveal.down();
+					break;
+				case 'up':
+					Reveal.up();
+					break;
+				case 'next':
+					Reveal.right();
+					break;
+				default:
+					break;
+			}
+
+		});
+
+		alexa.connect();
+	</script>
+</body>
+
+</html>

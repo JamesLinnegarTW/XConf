@@ -22,10 +22,9 @@ export default class WorldController {
     this.alexa.addObserver('object', (data)=>{ this.createObject(data);});
     this.alexa.addObserver('clear', ()=> this.clear() );
     this.alexa.addObserver('point', (data)=> this.pointAt(data) );
+    this.alexa.addObserver('clickMode', ()=>this.enableClickMode() );
 
     this.alexa.connect();
-    this.createObject("chair");
-    this.createObject("table");
   }
 
   setLocation(location){
@@ -40,6 +39,11 @@ export default class WorldController {
   hideArrow(){
     this.world.arrow.visible = false;
   }
+
+  enableClickMode(){
+    this.world.clickMode = true;
+  }
+
   createObject(objectType ){
     let object;
 
@@ -73,8 +77,10 @@ export default class WorldController {
   }
 
   onClick(vector){
-    this.world.addObject(new Cube(vector, this.world.color));
-    this.alexa.send(JSON.stringify({"type":"box", "data":{"vector":vector, "color": this.world.color}}));
+    if(this.world.clickMode){
+      this.world.addObject(new Cube(vector, this.world.color));
+      this.alexa.send(JSON.stringify({"type":"box", "data":{"vector":vector, "color": this.world.color}}));
+    }
   }
 
 }

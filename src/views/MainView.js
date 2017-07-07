@@ -34,7 +34,6 @@ export default class MainView {
     navigator.getVRDisplays().then((displays)=> {
       if (displays.length > 0) {
         this.vrDisplay = displays[0];
-        console.log(this);
         // Kick off the render loop.
         this.vrDisplay.requestAnimationFrame(()=>{ this.render() });
       }
